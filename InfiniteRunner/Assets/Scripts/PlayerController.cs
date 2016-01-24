@@ -9,11 +9,13 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     public float speed = 3.0f;
     public GameControl control;
+	public bool moving;
 
     // Use this for initialization
     void Start()
     {
         animator = GetComponent<Animator>();
+		moving = true;
     }
 
     // Update is called once per frame
@@ -27,7 +29,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger(BackToRunningHash);
         }
-        else if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x <= 4.5)
+		else if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x <= 4.5 && moving)
         {
             float goleft = transform.position.x + 0.1f * speed;
             if (goleft > 4.5)
@@ -41,7 +43,7 @@ public class PlayerController : MonoBehaviour
             moveDirection = transform.position;
             moveDirection = transform.TransformDirection(moveDirection);
         }
-        else if (Input.GetKey(KeyCode.RightArrow) && transform.position.x >=-4.5)
+		else if (Input.GetKey(KeyCode.RightArrow) && transform.position.x >=-4.5 && moving)
         {
             float goright = transform.position.x - 0.1f * speed;
             if (goright < -4.5)

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameControl : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GameControl : MonoBehaviour
     float score = 0f;
     public bool isGameOver = false;
     public GUISkin skin;
+	public PlayerController player;
 
     // Use this for initialization
     void Start ()
@@ -56,17 +58,20 @@ public class GameControl : MonoBehaviour
         {
             Time.timeScale = 0;
             GUI.Box(new Rect(Screen.width/4, Screen.height/4, Screen.width/2, Screen.height/2), "GAME OVER\nYOUR SCORE: " + (int)score);
+			player.moving = false;
 
             //Restart the Game on click
             if (GUI.Button(new Rect(Screen.width/4+10, Screen.height/4+ Screen.height/10+10, Screen.width/2-20, Screen.height/10), "RESTART"))
             {
-                Application.LoadLevel(0);
+                //Application.LoadLevel(0);
+				SceneManager.LoadScene (0);
             }
 
             //Load the main menu
             if (GUI.Button(new Rect(Screen.width / 4 + 10, Screen.height / 4 + 2 * Screen.height / 10 + 10, Screen.width / 2 - 20, Screen.height / 10), "MAIN MENU"))
             {
-                Application.LoadLevel(0);
+                //Application.LoadLevel(0);
+				SceneManager.LoadScene (0);
             }
 
             //Quit the game

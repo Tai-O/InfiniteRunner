@@ -28,13 +28,13 @@ public class SpawnBehaviour : MonoBehaviour
             if (spawnchecker)
             {
                 temp = Instantiate(powerup);
-                Vector3 pos = temp.transform.position;
+               // Vector3 pos = temp.transform.position;
                 temp.transform.position = new Vector3(Random.Range(-3f, 4f), 0.29f, 32.73079f);
             }
             else
             {
                 temp = Instantiate(obstacle);
-                Vector3 pos = temp.transform.position;
+                //Vector3 pos = temp.transform.position;
                 temp.transform.position = new Vector3(Random.Range(-3f, 4f), 1.1f, 29.09092f);
             }
 

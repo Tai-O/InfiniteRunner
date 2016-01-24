@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     public GUISkin myskin;
     public string LevelToLoad;
     public bool Paused = false;
+	public PlayerController player;
 
     // Use this for initialization
     void Start()
@@ -40,6 +42,7 @@ public class PauseMenu : MonoBehaviour
 
         if (Paused)
         {
+			player.moving = false;
             GUI.Box(new Rect(Screen.width / 4, Screen.height / 4, Screen.width / 2, Screen.height / 2), "PAUSED");
             if (GUI.Button(new Rect(Screen.width / 4 + 10, Screen.height / 4 + Screen.height / 10 + 10, Screen.width / 2 - 20, Screen.height / 10), "RESUME"))
             {
@@ -49,11 +52,13 @@ public class PauseMenu : MonoBehaviour
             if (GUI.Button(new Rect(Screen.width / 4 + 10, Screen.height / 4 + 2 * Screen.height / 10 + 10, Screen.width / 2 - 20, Screen.height / 10), "RESTART"))
             {
                 Application.LoadLevel(Application.loadedLevel);
+				//SceneManager.LoadScene (SceneManager.LoadScene);
             }
 
             if (GUI.Button(new Rect(Screen.width / 4 + 10, Screen.height / 4 + 3 * Screen.height / 10 + 10, Screen.width / 2 - 20, Screen.height / 10), "MAIN MENU"))
             {
-                Application.LoadLevel(LevelToLoad);
+                //Application.LoadLevel(LevelToLoad);
+				SceneManager.LoadScene (LevelToLoad);
             }
         }
     }
